@@ -17,7 +17,7 @@ let main argv =
     use app = new OpenGlApplication()
     let runtime = app.Runtime
 
-    let a = KitchenSink.KitchenSinkApp.start()
+    let a = SimpleTestApp.app |> App.start
 
     WebPart.startServer 4321 [ 
         MutableApp.toWebPart runtime a
