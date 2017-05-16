@@ -56,20 +56,6 @@
     </Otherwise>
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
-      <PropertyGroup>
-        <__paket__TurboJpegWrapper_targets>TurboJpegWrapper</__paket__TurboJpegWrapper_targets>
-      </PropertyGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
-      <PropertyGroup>
-        <__paket__Aardvark_Compiler_DomainTypes_targets>Aardvark.Compiler.DomainTypes</__paket__Aardvark_Compiler_DomainTypes_targets>
-      </PropertyGroup>
-    </When>
-  </Choose>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -78,14 +64,8 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="KitchenSinkModel.fs" />
-    <Content Include="any\netstandard1.6\FSharp.Core.optdata">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="any\netstandard1.6\FSharp.Core.sigdata">
-      <Paket>True</Paket>
-    </Content>
-    <Compile Include="KitchenSink.fs" />
+    <Compile Include="SimpleTestModel.fs" />
+    <Compile Include="SimpleTest.fs" />
     <Compile Include="Program.fs" />
     <Content Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -94,9 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -459,6 +436,17 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
       <ItemGroup>
+        <Reference Include="FSharp.Core">
+          <HintPath>..\..\packages\FSharp.Core\lib\net45\FSharp.Core.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.5'">
+      <ItemGroup>
         <Reference Include="FSharp.Quotations.Evaluator">
           <HintPath>..\..\packages\FSharp.Quotations.Evaluator\lib\net40\FSharp.Quotations.Evaluator.dll</HintPath>
           <Private>True</Private>
@@ -616,6 +604,6 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\packages\Aardvark.Compiler.DomainTypes.MSBuild\build\$(__paket__Aardvark_Compiler_DomainTypes_targets).targets" Condition="Exists('..\..\packages\Aardvark.Compiler.DomainTypes.MSBuild\build\$(__paket__Aardvark_Compiler_DomainTypes_targets).targets')" Label="Paket" />
-  <Import Project="..\..\packages\TurboJpegWrapper\build\$(__paket__TurboJpegWrapper_targets).targets" Condition="Exists('..\..\packages\TurboJpegWrapper\build\$(__paket__TurboJpegWrapper_targets).targets')" Label="Paket" />
+  <Import Project="..\..\packages\Aardvark.Compiler.DomainTypes.MSBuild\build\Aardvark.Compiler.DomainTypes.targets" Condition="Exists('..\..\packages\Aardvark.Compiler.DomainTypes.MSBuild\build\Aardvark.Compiler.DomainTypes.targets')" Label="Paket" />
+  <Import Project="..\..\packages\TurboJpegWrapper\build\TurboJpegWrapper.targets" Condition="Exists('..\..\packages\TurboJpegWrapper\build\TurboJpegWrapper.targets')" Label="Paket" />
 </Project>

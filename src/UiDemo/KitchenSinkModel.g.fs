@@ -3,6 +3,7 @@ namespace KitchenSink
 open System
 open Aardvark.Base
 open Aardvark.Base.Incremental
+open KitchenSink
 
 [<AutoOpen>]
 module Mutable =

@@ -3,6 +3,7 @@ bin/Debug
 *.swp
 *.userprefs
 **/obj
+*.g.fs
 /packages
 !/packages/*.config
 /src/*.suo
